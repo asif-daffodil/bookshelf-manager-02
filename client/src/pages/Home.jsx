@@ -12,7 +12,7 @@ const Home = () => {
 
     const fetchBooks = async () => {
         try {
-            const response = await axios.get("http://localhost:5000/all-books")
+            const response = await axios.get("https://bookshelf-manager-02.vercel.app/all-books")
             setAllBooks(response.data.data || [])
         } catch (error) {
             toast.error(`Could not load books. ${getErrorMessage(error)}`)
@@ -23,7 +23,7 @@ const Home = () => {
         e.preventDefault()
 
         try {
-            await axios.post("http://localhost:5000/add-book", { title, author })
+            await axios.post("https://bookshelf-manager-02.vercel.app/add-book", { title, author })
             toast.success("Books added successfully")
             setTitle("")
             setAuthor("")
@@ -37,7 +37,7 @@ const Home = () => {
         if (!bookId) return
 
         try {
-            await axios.patch(`http://localhost:5000/books/${bookId}/status`, { status })
+            await axios.patch(`https://bookshelf-manager-02.vercel.app/books/${bookId}/status`, { status })
             toast.success(`Book marked as ${status}`)
             await fetchBooks()
         } catch (error) {
@@ -49,7 +49,7 @@ const Home = () => {
         if (!bookId) return
 
         try {
-            await axios.delete(`http://localhost:5000/books/${bookId}`)
+            await axios.delete(`https://bookshelf-manager-02.vercel.app/books/${bookId}`)
             toast.success("Book deleted successfully")
             await fetchBooks()
         } catch (error) {
@@ -58,7 +58,7 @@ const Home = () => {
     }
 
     useEffect(() => {
-        axios.get("http://localhost:5000/all-books")
+        axios.get("https://bookshelf-manager-02.vercel.app/all-books")
             .then((response) => setAllBooks(response.data.data || []))
             .catch((error) => toast.error(`Could not load books. ${getErrorMessage(error)}`))
     }, [])
