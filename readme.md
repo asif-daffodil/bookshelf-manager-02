@@ -64,7 +64,7 @@ bookshelf-manager-02/
 Ensure you have the following installed on your system:
 - **Node.js** (v18.x or later recommended)
 - **npm** (comes with Node.js)
-- **MongoDB** running locally on default port `27017` (or configured connection URI)
+- **MongoDB Atlas** or MongoDB local instance
 
 ---
 
@@ -85,7 +85,7 @@ npm install
 npm run dev
 ```
 
-> **Note**: The backend server runs on `http://localhost:5000` by default and connects to `mongodb://localhost:27017/bookshelf`.
+> **Note**: The backend server runs on `http://localhost:5000` by default and connects to MongoDB Atlas (`bookShelf` database) or custom URI via `MONGODB_URI` environment variable.
 
 #### 3. Setup and Run Frontend Client
 In a new terminal window, navigate to the `client` directory, install dependencies, and launch the Vite development server:

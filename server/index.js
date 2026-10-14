@@ -6,9 +6,16 @@ const mongoose = require("mongoose")
 app.use(express.json())
 app.use(express.urlencoded())
 
-mongoose.connect("mongodb://localhost:27017/bookshelf").then(() => {
-    console.log("Database connected sucecssfully!");
-})
+
+const MONGODB_URI = "mongodb://lecturer1_db_user:rHe55LSQXKQ4J9hd@ac-lnk8zay-shard-00-00.c0gna6h.mongodb.net:27017,ac-lnk8zay-shard-00-01.c0gna6h.mongodb.net:27017,ac-lnk8zay-shard-00-02.c0gna6h.mongodb.net:27017/bookShelf?ssl=true&replicaSet=atlas-6kaa84-shard-0&authSource=admin&appName=Cluster0"
+
+mongoose.connect(MONGODB_URI)
+    .then(() => {
+        console.log("Database connected successfully!");
+    })
+    .catch((error) => {
+        console.error("Database connection error:", error);
+    });
 
 const bookSchema = new mongoose.Schema({
     title: String,
